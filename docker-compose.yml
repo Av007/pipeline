@@ -1,0 +1,35 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - mongo_network
+    restart: always
+
+  app:
+    build: .
+    container_name: pipeline
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - "5005:5000"
+    volumes:
+      - .:/app
+    networks:
+      - mongo_network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  mongo_network:
+    driver: bridge

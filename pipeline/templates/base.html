@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}Report</title>
+    <style>
+      .left {
+        float: right;
+      }
+      svg {
+        width: 100%;
+      }
+
+      .table-container {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+      table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ddd; 
+            text-align: left;
+        }
+
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .custom-striped {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .custom-striped th, .custom-striped td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .custom-striped tr:nth-child(odd) {
+            background-color: #f2f2f2;  /* Light gray for odd rows */
+        }
+        .custom-striped tr:nth-child(even) {
+            background-color: #ffffff;  /* White for even rows */
+        }
+        .custom-striped th {
+            background-color: coral;  /* Green background for header */
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="content">
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+    {% block js %}{% endblock %}
+</body>
+</html>

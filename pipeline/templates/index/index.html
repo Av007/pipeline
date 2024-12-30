@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="table-container">{{ data.table | safe }}</div>
+    <div class="column">{{ data.pie | safe }}</div>
+    <div class="column">{{ data.histo | safe }}</div>
+</div>
+{% endblock %}
