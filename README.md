@@ -1,7 +1,4 @@
 ## Pipeline | A complex data pipeline.
-
-curl -L http://github.com/Av007/pipeline/archive/main.zip
-
 ### Configure
 ```
 COPY .env-dist .env
@@ -30,3 +27,4 @@ Options:
 
 Results you can see in browser:
  * *Running on http://localhost:5005/*
+![report](./report.jpg)
