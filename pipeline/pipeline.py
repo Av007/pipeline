@@ -2,8 +2,9 @@ from concurrent.futures import ThreadPoolExecutor
 import concurrent
 from click import secho
 from flask import current_app
+
 from .models import Host
-from .providers import Qualys, Crowdstrike
+from .providers import Qualys, Crowdstrike, Tenable
 from typing import Dict
 
 
@@ -25,7 +26,8 @@ class Pipeline:
         if not skip_collecting:
             providers = [
                 Qualys(),
-                Crowdstrike()
+                Crowdstrike(),
+                Tenable()
             ]
             result = []
 
